@@ -16,7 +16,8 @@ export default (state = {
         connected: false,
         error: true
       }
-  }
 
-  return state
+    default:
+      return state
+  }
 }

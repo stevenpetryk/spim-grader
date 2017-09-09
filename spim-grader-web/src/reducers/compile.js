@@ -34,7 +34,8 @@ export default (state = {
         ...state,
         codeChangedSinceCompilation: true
       }
-  }
 
-  return state
+    default:
+      return state
+  }
 }

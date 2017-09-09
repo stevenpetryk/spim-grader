@@ -3,17 +3,19 @@ const { exec, spawn } = require('child_process')
 const parseTap = require('./parseTap')
 const shortid = require('shortid')
 
-shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#$')
+const EventEmitter = require('events')
 
-class Connection {
+class Connection extends EventEmitter {
   constructor (ws) {
+    super()
     this.ws = ws
     this.uuid = shortid.generate()
+    this.killed = false
   }
 
   start () {
     this.ws.on('message', (...args) => this.onMessage(...args))
-    this.ws.on('close', (...args) => this.onClose(...args))
+    this.ws.on('close', () => this.killContainer())
 
     this.startContainer()
   }
@@ -38,21 +40,27 @@ class Connection {
       case 'test': this.test(); break
       case 'run': this.run(); break
       case 'stdin': this.stdinReceived(parsed.line); break
-      default: this.send({ error: 'unrecognized_command', command: parsed.command })
+      default:
     }
   }
 
-  onClose () {
+  killContainer () {
     console.log('Killing container', this.uuid)
-    exec(`docker kill ${this.uuid}`)
+    exec(`docker kill ${this.uuid}`, (error) => { if (!error) this.emit('containerKilled') })
   }
 
   send (event, payload = null) {
-    this.ws.send(JSON.stringify({ event: event, payload }))
+    this.ws.send(JSON.stringify({ event: event, payload }), (error) => error && this.handleSendError(error))
   }
 
   sendError (event, payload = null) {
     this.ws.send(JSON.stringify({ event: event, error: true, payload }))
+  }
+
+  handleSendError (error) {
+    if (!error.message.includes('not opened')) {
+      console.error(error, this.ws.readyState)
+    }
   }
 
   compile (program) {

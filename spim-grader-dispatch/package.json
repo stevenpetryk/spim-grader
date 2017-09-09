@@ -7,6 +7,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "gcc-output-parser": "0.0.3",
+    "node-cleanup": "^2.1.2",
     "shortid": "^2.2.8",
     "tap-parser": "^6.0.1",
     "ws": "^3.1.0"

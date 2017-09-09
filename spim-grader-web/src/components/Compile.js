@@ -25,24 +25,24 @@ export default ({
 
 function getCompileStatus ({ compiled, compiling, codeChangedSinceCompilation, error }) {
   if (compiling) {
-    return <p><img src={require('../images/circle-o-amber.svg')} /> Compiling...</p>
+    return <p><img alt='' src={require('../images/circle-o-amber.svg')} /> Compiling...</p>
   }
 
   if (error) {
     if (codeChangedSinceCompilation) {
-      return <p><img src={require('../images/circle-o-amber.svg')} /> Code changed since last compilation</p>
+      return <p><img alt='' src={require('../images/circle-o-amber.svg')} /> Code changed since last compilation</p>
     } else {
-      return <p><img src={require('../images/error.svg')} /> Compilation failed</p>
+      return <p><img alt='' src={require('../images/error.svg')} /> Compilation failed</p>
     }
   }
 
   if (compiled) {
     if (codeChangedSinceCompilation) {
-      return <p><img src={require('../images/circle-o-amber.svg')} /> Code changed since last compilation</p>
+      return <p><img alt='' src={require('../images/circle-o-amber.svg')} /> Code changed since last compilation</p>
     } else {
-      return <p><img src={require('../images/check.svg')} /> Compilation successful, no changes</p>
+      return <p><img alt='' src={require('../images/check.svg')} /> Compilation successful, no changes</p>
     }
   }
 
-  return <p><img src={require('../images/circle-o.svg')} /> Changes have not been compiled</p>
+  return <p><img alt='' src={require('../images/circle-o.svg')} /> Changes have not been compiled</p>
 }

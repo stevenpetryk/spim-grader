@@ -17,7 +17,8 @@ export default (state = {
         results: null,
         error: null
       }
-  }
 
-  return state
+    default:
+      return state
+  }
 }
