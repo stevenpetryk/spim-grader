@@ -1,0 +1,46 @@
+.connection {
+  font-size: 17px;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  position: relative;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.connection:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e0bd52;
+  opacity: 0.6;
+  background: transparent;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  box-shadow: 0px 0px 10px transparent;
+}
+
+.connection.connected {
+  color: white;
+}
+
+.connection.connected:before {
+  background: #9CFF38;
+  border-color: #9CFF38;
+  box-shadow: 0px 0px 10px #9CFF38;
+  opacity: 1;
+}
+
+.connection p {
+  margin: 0;
+  text-align: right;
+}
+
+.connection code {
+  color: rgba(255, 255, 255, 0.6);
+}

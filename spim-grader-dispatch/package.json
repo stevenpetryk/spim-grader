@@ -1,0 +1,21 @@
+{
+  "name": "spim-grader-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "gcc-output-parser": "0.0.3",
+    "shortid": "^2.2.8",
+    "tap-parser": "^6.0.1",
+    "ws": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

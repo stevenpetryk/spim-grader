@@ -1,0 +1,29 @@
+.compilation-status {
+  transition: all 0.2s ease;
+}
+
+.compilation-status p {
+  margin: 0;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.compilation-status .button {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.compilation-status img {
+  margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  top: 2px;
+}
+
+.compilation-status:not(.compiled):not(.compiling):not(.error) p {
+  opacity: 0.5;
+}
+
+.compilation-status.error {
+  background: #800000;
+}
