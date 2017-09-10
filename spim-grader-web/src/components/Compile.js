@@ -13,7 +13,7 @@ export default ({
   compile
 }) => (
   <div className={cx('module compilation-status', { compiled, compiling, error })}>
-    <Button disabled={!codeChangedSinceCompilation} onClick={compile}>Compile (⌘ + Enter)</Button>
+    <Button disabled={!codeChangedSinceCompilation} onClick={compile}>Compile</Button>
 
     <div className='inner'>
       {getCompileStatus({ compiled, compiling, codeChangedSinceCompilation, error })}

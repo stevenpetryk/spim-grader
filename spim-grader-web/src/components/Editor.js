@@ -15,7 +15,7 @@ export default ({
       options={{
         mode: 'text/x-csrc',
         lineNumbers: true,
-        tabSize: 2
+        tabSize: 4
       }}
     />
   </div>
