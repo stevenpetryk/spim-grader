@@ -31,3 +31,7 @@
 code, pre {
   font-family: "Source Code Pro" !important;
 }
+
+p {
+  line-height: 22px;
+}

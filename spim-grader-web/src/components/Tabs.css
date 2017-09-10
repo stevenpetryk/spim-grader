@@ -1,0 +1,47 @@
+.react-tabs__tab-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+.react-tabs__tab {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  padding: 15px;
+  outline: 3px solid transparent;
+  position: relative;
+}
+
+.react-tabs__tab--selected {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.react-tabs__tab:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.react-tabs .badge {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  margin-left: 2px;
+  position: relative;
+  top: 3px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: #9CFF38;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.react-tabs .badge.loading {
+  background: #e0bd52 !important;
+}
+
+.react-tabs .badge.error {
+  background: #af1717;
+}

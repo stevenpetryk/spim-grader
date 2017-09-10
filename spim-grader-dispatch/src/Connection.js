@@ -25,6 +25,7 @@ class Connection extends EventEmitter {
       if (error) {
         this.send('container_failed', { error, stderr })
         this.ws.close()
+        return
       }
 
       console.log('Container created', this.uuid)
@@ -37,7 +38,6 @@ class Connection extends EventEmitter {
 
     switch (parsed.command) {
       case 'compile': this.compile(parsed.program); break
-      case 'test': this.test(); break
       case 'run': this.run(); break
       case 'stdin': this.stdinReceived(parsed.line); break
       default:
@@ -50,7 +50,16 @@ class Connection extends EventEmitter {
   }
 
   send (event, payload = null) {
-    this.ws.send(JSON.stringify({ event: event, payload }), (error) => error && this.handleSendError(error))
+    return new Promise((resolve, reject) => {
+      this.ws.send(JSON.stringify({ event: event, payload }), (error) => {
+        if (error) {
+          this.handleSendError(error)
+          reject(error)
+        }
+
+        resolve()
+      })
+    })
   }
 
   sendError (event, payload = null) {
@@ -69,6 +78,7 @@ class Connection extends EventEmitter {
         this.sendError('compilation_failed', { error, stdout, stderr })
       } else {
         this.send('compilation_succeeded', { stdout })
+          .then(() => this.test())
       }
     })
   }

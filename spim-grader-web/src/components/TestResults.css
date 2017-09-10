@@ -1,14 +1,34 @@
 .test-results {
-  list-style: none;
   margin: 0;
-  padding: 0;
   font-size: 0.9em;
+}
+
+.test-results .summary {
+  text-align: center;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.test-status .error {
+  background: #800000 url('../images/warning-triangle.svg') left 15px center no-repeat;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  padding-left: 55px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.test-results ul {
+  list-style: none;
+  padding: 0;
 }
 
 .test-results li {
   margin: 0;
-  margin-top: 10px;
-  padding-left: 10px;
+  margin-top: 3px;
+  padding: 10px 10px;
+  padding-left: 20px;
+  border-radius: 3px;
   position: relative;
 }
 
@@ -30,16 +50,27 @@
   width: 5px;
   height: 5px;
   position: absolute;
-  left: 0px;
+  left: 6px;
   background: #9dfb71;
-  top: 5px;
+  top: 16px;
+}
+
+.test-results li.failure {
+  background: #800000;
 }
 
 .test-results li.failure:before {
-  background: #ff907c;
   content: '×';
-  top: 0px;
-  left: -1px;
+  top: 10px;
   background: none;
-  color: #ff907c;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.test-status.loading {
+  opacity: 0.2;
+}
+
+.test-status {
+  opacity: 1;
+  transition: all 0.1s ease;
 }

@@ -23,11 +23,11 @@ void instructionFetchTest () {
 	unsigned pc = 12;
 
 	int result = instruction_fetch(3, memory, &instruction);
-	assertEquals("Halts on non-word-aligned PC value", result, 1);
+	assertEquals("Should halt on non-word-aligned PC value", result, 1);
 
 	result = instruction_fetch(pc, memory, &instruction);
-	assertEquals("Doesn't halt on word-aligned value", result, 0);
-	assertEquals("Fetches PC value from memory", instruction, memory[pc / 4]);
+	assertEquals("Should not halt on word-aligned value", result, 0);
+	assertEquals("Should fetch PC value from memory", instruction, memory[pc / 4]);
 }
 
 void instructionPartitionTest () {
@@ -36,13 +36,13 @@ void instructionPartitionTest () {
 	unsigned op = 0, r1 = 0, r2 = 0, r3 = 0, funct = 0, offset = 0, jsec = 0;
 
 	instruction_partition(rType, &op, &r1, &r2, &r3, &funct, &offset, &jsec);
-	assertEquals("Extracts op", op, 0b100001);
-	assertEquals("Extracts rs", r1, 0b10001);
-	assertEquals("Extracts rt", r2, 0b10011);
-	assertEquals("Extracts rd", r3, 0b10111);
-	assertEquals("Extracts funct", funct, 0b100001);
-	assertEquals("Extracts offset", offset, 0b1011110001100001);
-	assertEquals("Extracts jsec", jsec, 0b10001100111011110001100001);
+	assertEquals("Should extract op", op, 0b100001);
+	assertEquals("Should extract rs", r1, 0b10001);
+	assertEquals("Should extract rt", r2, 0b10011);
+	assertEquals("Should extract rd", r3, 0b10111);
+	assertEquals("Should extract funct", funct, 0b100001);
+	assertEquals("Should extract offset", offset, 0b1011110001100001);
+	assertEquals("Should extract jsec", jsec, 0b10001100111011110001100001);
 }
 
 void signExtendTest () {
@@ -55,8 +55,8 @@ void signExtendTest () {
 	sign_extend(positiveOffset, &positiveOffset);
 	sign_extend(negativeOffset, &negativeOffset);
 
-	assertEquals("Doesn't extend zeroes for positive value", positiveOffset, expectedPositive);
-	assertEquals("Extends with ones for negative values", negativeOffset, expectedNegative);
+	assertEquals("Shouldn't extend zeroes for positive value", positiveOffset, expectedPositive);
+	assertEquals("Should extend with ones for negative values", negativeOffset, expectedNegative);
 }
 
 void writeRegisterTest () {
@@ -68,45 +68,41 @@ void writeRegisterTest () {
 	int aluResult = 75;
 
 	write_register(0, 0, memData, aluResult, 0, 0, 0, registerFile);
-	assertEquals("Register isn't modified when RegWrite is deasserted", registerFile[0], 1);
+	assertEquals("Register shouldn't be modified when RegWrite is deasserted", registerFile[0], 1);
 
 	write_register(r2, r3, memData, aluResult, 1, 0, 0, registerFile);
-	assertEquals("Writes ALUresult -> rs when appropriate", registerFile[r2], aluResult);
+	assertEquals("Should write ALUresult -> rs when appropriate", registerFile[r2], aluResult);
 
 	write_register(r2, r3, memData, aluResult, 1, 0, 1, registerFile);
-	assertEquals("Writes memdata -> rs when appropriate", registerFile[r2], memData);
+	assertEquals("Should write memdata -> rs when appropriate", registerFile[r2], memData);
 
 	write_register(r2, r3, memData, aluResult, 1, 1, 0, registerFile);
-	assertEquals("Writes ALUresult -> rt when appropriate", registerFile[r3], aluResult);
+	assertEquals("Should write ALUresult -> rt when appropriate", registerFile[r3], aluResult);
 
 	write_register(r2, r3, memData, aluResult, 1, 1, 1, registerFile);
-	assertEquals("Writes memdata -> rt when appropriate", registerFile[r3], memData);
+	assertEquals("Should write memdata -> rt when appropriate", registerFile[r3], memData);
 }
 
 void pcUpdateTest () {
 	unsigned pc = 4000;
 
 	PC_update(0, 0, 0, 0, 0, &pc);
-	assertEquals("PC gets incremented by 4", pc, 4004);
+	assertEquals("Should increment PC by 4", pc, 4004);
 
 	pc = 4000;
 	PC_update(0, 3, 1, 0, 1, &pc);
-	assertEquals("Uses PC-relative addressing when branching", pc, 4016);
+	assertEquals("Should use PC-relative addressing when branching", pc, 4016);
 
 	pc = 4000;
 	PC_update(0, 3, 1, 0, 0, &pc);
-	assertEquals("Uses incremental addressing when branch isn't taken", pc, 4004);
-
-	pc = 4000;
-	PC_update(0, 3, 1, 0, 0, &pc);
-	assertEquals("Uses incremental addressing when branch isn't taken", pc, 4004);
+	assertEquals("Should use normal addressing when branch isn't taken", pc, 4004);
 
 	pc = 0b11110000000000000000000000000000;
 	unsigned jsec = 0b00000000000000001111111111;
 	unsigned expected = 0b11110000000000000000111111111100;
 
 	PC_update(jsec, 0, 0, 1, 0, &pc);
-	assertEquals("Uses pseudo-direct addressing when jumping", pc, expected);
+	assertEquals("Should use pseudo-direct addressing when jumping", pc, expected);
 }
 
 int main () {

@@ -8,7 +8,9 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     compile () {
-      dispatch((dispatch, getState) => dispatch({ type: 'COMPILE', socket: true, payload: { program: getState().code } }))
+      dispatch((dispatch, getState) =>
+        dispatch({ type: 'COMPILE', socket: true, payload: { program: getState().code } })
+      )
     }
   }
 }

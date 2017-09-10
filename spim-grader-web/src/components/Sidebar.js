@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 
 import './Sidebar.css'
+import './Tabs.css'
 
 import ConnectionContainer from './ConnectionContainer'
 import CompileContainer from './CompileContainer'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
-
+import TestBadge from './TestBadge'
 import TestContainer from './TestContainer'
 
 export default class Sidebar extends Component {
@@ -22,14 +23,38 @@ export default class Sidebar extends Component {
         <Tabs>
           <TabList>
             <Tab>Run</Tab>
-            <Tab>Tests</Tab>
+            <Tab>
+              Tests <TestBadge />
+            </Tab>
           </TabList>
 
-          <TabPanel />
+          <div className='react-tab-panels'>
+            <TabPanel>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+              <p>asdf</p>
+            </TabPanel>
 
-          <TabPanel>
-            <TestContainer />
-          </TabPanel>
+            <TabPanel>
+              <TestContainer />
+            </TabPanel>
+          </div>
         </Tabs>
       </div>
     )

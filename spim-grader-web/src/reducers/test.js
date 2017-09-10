@@ -1,5 +1,4 @@
 export default (state = {
-  tested: false,
   results: null,
   error: null
 }, action) => {
@@ -7,10 +6,27 @@ export default (state = {
     case 'TESTS_SUCCEEDED':
       return {
         ...state,
+        error: null,
+        loading: false,
         results: action.payload
       }
 
-    case 'COMPILATION_SUCCEEDED':
+    case 'TESTS_FAILED':
+      let error = action.payload.stderr || action.payload.error
+
+      return {
+        ...state,
+        results: null,
+        loading: false,
+        error
+      }
+
+    case 'COMPILE':
+      return {
+        ...state,
+        loading: true
+      }
+
     case 'COMPILATION_FAILED':
       return {
         ...state,

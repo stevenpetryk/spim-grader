@@ -5,12 +5,27 @@
   background: #333D49;
   border-left: 3px solid rgba(0, 0, 0, 0.4);
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .module {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.react-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.react-tabs__tab-list {
+  flex-shrink: 0;
+}
+
+.react-tab-panels {
+  overflow: scroll;
 }
 
 .sidebar:not(.connected) .module {
