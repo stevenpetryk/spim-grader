@@ -29,27 +29,7 @@ export default class Sidebar extends Component {
           </TabList>
 
           <div className='react-tab-panels'>
-            <TabPanel>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-              <p>asdf</p>
-            </TabPanel>
+            <TabPanel />
 
             <TabPanel>
               <TestContainer />

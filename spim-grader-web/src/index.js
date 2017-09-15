@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { AppContainer as HotEnabler } from 'react-hot-loader'
 import App from './components/App'
 import 'normalize.css'
 
@@ -9,8 +10,27 @@ import store from './store'
 
 import './socket'
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-, document.getElementById('root'))
+const appRoot = document.getElementById('root')
+
+render(
+  <HotEnabler>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </HotEnabler>
+, appRoot)
+
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    const NextApp = require('./components/App').default
+
+    render(
+      <HotEnabler>
+        <Provider store={store}>
+          <NextApp />
+        </Provider>
+      </HotEnabler>,
+      appRoot
+    )
+  })
+}
