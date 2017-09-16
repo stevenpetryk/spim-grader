@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-import './Button.css'
+import './Button.scss'
 
 export default ({ children, className, disabled, onClick = () => {}, ...rest }) => (
   <button
