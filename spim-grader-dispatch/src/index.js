@@ -19,12 +19,11 @@ wss.on('connection', (ws, req) => {
 
   connection.on('containerKilled', () => {
     const thisIndex = connections.indexOf(connection)
-    console.log('splicing at ', thisIndex)
     connections.splice(thisIndex, 1)
   })
 })
 
-server.listen(8080, () => {
+server.listen(8000, () => {
   console.log('Listening on %d', server.address().port)
 })
 

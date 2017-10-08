@@ -32,6 +32,9 @@ export default {
         test: /\.(png|jpeg|jpg|svg)$/,
         use: ['file-loader']
       }
+    ],
+    noParse: [
+      /(xterm.js|attach.js)$/
     ]
   },
   plugins: [

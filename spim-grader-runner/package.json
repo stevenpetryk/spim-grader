@@ -1,0 +1,16 @@
+{
+  "name": "spim-grader-runner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "node-pty": "^0.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

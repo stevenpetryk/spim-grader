@@ -1,13 +1,14 @@
 const fs = require('fs')
 const { spawn } = require('child_process')
+const pty = require('node-pty')
 
 module.exports = function () {
-  const project = spawn('./project.out', ['input_file.asc'])
+  const term = pty.spawn('./project.out', ['input_file.asc'])
 
-  project.stdout.pipe(process.stdout)
-  process.stdin.pipe(project.stdin)
+  term.on('data', (data) => process.stdout.write(data))
+  process.stdin.on('data', (data) => term.write(data))
 
-  process.stdin.on('data', () => performHealthCheck())
+  // process.stdin.on('data', () => performHealthCheck())
 }
 
 function performHealthCheck () {

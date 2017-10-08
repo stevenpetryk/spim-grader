@@ -1,0 +1,7 @@
+.terminal, .xterm-viewport {
+  border-radius: 5px;
+}
+
+.xterm-viewport {
+  padding: 10px;
+}

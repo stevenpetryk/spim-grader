@@ -79,6 +79,7 @@ class Connection extends EventEmitter {
       } else {
         this.send('compilation_succeeded', { stdout })
           .then(() => this.test())
+          .then(() => this.run())
       }
     })
   }
@@ -100,9 +101,9 @@ class Connection extends EventEmitter {
     this.runProcess.stdout.on('data', (data) => {
       this.send('stdout_received', { data: data.toString() })
     })
-    this.runProcess.on('close', () => {
+    this.runProcess.on('close', (event) => {
       if (this.ws.readyState === WebSocket.OPEN) {
-        this.sendError('process_killed')
+        this.sendError('process_killed', { error: event })
       }
 
       this.runProcess = null
@@ -115,7 +116,7 @@ class Connection extends EventEmitter {
       return
     }
 
-    this.runProcess.stdin.write(line + '\n')
+    this.runProcess.stdin.write(line)
   }
 
   execOnContainer (command, callback) {
@@ -123,7 +124,7 @@ class Connection extends EventEmitter {
   }
 
   spawnOnContainer (command) {
-    return spawn('docker', ['exec', '-i', this.uuid, 'node', 'src/index.js', command])
+    return spawn('docker', ['exec', '-i', this.uuid, 'npm', 'start', '--silent', '--', command])
   }
 }
 

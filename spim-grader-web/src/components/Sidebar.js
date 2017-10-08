@@ -9,6 +9,8 @@ import CompileContainer from './CompileContainer'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
+import TerminalContainer from './TerminalContainer'
+
 import TestBadge from './TestBadge'
 import TestContainer from './TestContainer'
 
@@ -29,7 +31,9 @@ export default class Sidebar extends Component {
           </TabList>
 
           <div className='react-tab-panels'>
-            <TabPanel />
+            <TabPanel>
+              <TerminalContainer />
+            </TabPanel>
 
             <TabPanel>
               <TestContainer />
