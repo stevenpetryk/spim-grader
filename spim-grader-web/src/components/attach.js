@@ -55,7 +55,6 @@
     };
 
     term._sendData = function (data) {
-      console.log(data)
       socket.send(JSON.stringify({ command: 'stdin', line: data }));
     };
 

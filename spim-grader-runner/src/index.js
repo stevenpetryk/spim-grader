@@ -9,7 +9,6 @@ const command = process.argv[2]
 switch (command) {
   case 'compile':
     let program = Buffer.from(process.argv[3], 'base64').toString()
-    console.log(program)
 
     compile(program).catch(({ stderr }) => writeFailure(stderr))
     break
