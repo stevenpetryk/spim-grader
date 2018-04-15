@@ -1,6 +1,6 @@
 import store from './store'
 
-const socket = new WebSocket('ws://localhost:4000')
+const socket = new WebSocket(process.env.SOCKET_URL || 'ws://localhost:4000')
 
 socket.onmessage = (event) => {
   const message = JSON.parse(event.data)

@@ -1,3 +1,4 @@
+import webpack from 'webpack'
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
@@ -39,6 +40,7 @@ export default {
   },
   plugins: [
     new CaseSensitivePathsPlugin(),
-    new HtmlWebpackPlugin({ template: 'src/200.ejs' })
+    new HtmlWebpackPlugin({ template: 'src/200.ejs' }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'SOCKET_URL'])
   ]
 }

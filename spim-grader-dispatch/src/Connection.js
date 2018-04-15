@@ -23,6 +23,7 @@ class Connection extends EventEmitter {
   startContainer () {
     exec(`docker run -dit --name=${this.uuid} spim-grader-runner`, (error, stdout, stderr) => {
       if (error) {
+        console.log('Container failed to start', stderr)
         this.send('container_failed', { error, stderr })
         this.ws.close()
         return

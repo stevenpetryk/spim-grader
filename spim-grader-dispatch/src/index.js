@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 8000;
+
 const express = require('express')
 const http = require('http')
 const WebSocket = require('ws')
@@ -23,7 +25,7 @@ wss.on('connection', (ws, req) => {
   })
 })
 
-server.listen(8000, () => {
+server.listen(PORT, () => {
   console.log('Listening on %d', server.address().port)
 })
 
