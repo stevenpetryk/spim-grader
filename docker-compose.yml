@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  dispatch:
+    build: ./spim-grader-dispatch
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  web:
+    build: ./spim-grader-web
+    depends_on:
+      - dispatch
+    environment:
+      - VIRTUAL_HOST=spim-grader.local
