@@ -1,7 +1,7 @@
-import { connect } from 'react-redux'
-import Test from './Test'
+import { connect } from "react-redux"
+import Test from "./Test"
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.test
 }
 

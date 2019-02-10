@@ -1,12 +1,12 @@
-import React from 'react'
-import cx from 'classnames'
+import React from "react"
+import cx from "classnames"
 
-import './Button.scss'
+import "./Button.scss"
 
 export default ({ children, className, disabled, onClick = () => {}, ...rest }) => (
   <button
-    className={cx('button', className, { disabled })}
-    onClick={(event) => {
+    className={cx("button", className, { disabled })}
+    onClick={event => {
       event.preventDefault()
 
       if (disabled) return

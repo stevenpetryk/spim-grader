@@ -1,10 +1,10 @@
-import { connect } from 'react-redux'
-import Sidebar from './Sidebar'
+import { connect } from "react-redux"
+import Sidebar from "./Sidebar"
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     connected: state.connection.connected,
-    compiled: state.compile.compiled
+    compiled: state.compile.compiled,
   }
 }
 

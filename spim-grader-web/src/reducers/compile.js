@@ -1,38 +1,41 @@
-export default (state = {
-  compiled: false,
-  compiling: false,
-  codeChangedSinceCompilation: true,
-  error: null
-}, action) => {
+export default (
+  state = {
+    compiled: false,
+    compiling: false,
+    codeChangedSinceCompilation: true,
+    error: null,
+  },
+  action,
+) => {
   switch (action.type) {
-    case 'COMPILE':
+    case "COMPILE":
       return {
         ...state,
         compiling: true,
-        codeChangedSinceCompilation: false
+        codeChangedSinceCompilation: false,
       }
-    case 'COMPILATION_SUCCEEDED':
+    case "COMPILATION_SUCCEEDED":
       return {
         ...state,
         compiled: true,
         compiling: false,
         codeChangedSinceCompilation: false,
-        error: null
+        error: null,
       }
 
-    case 'COMPILATION_FAILED':
+    case "COMPILATION_FAILED":
       return {
         ...state,
         compiled: false,
         compiling: false,
         codeChangedSinceCompilation: false,
-        error: action.payload.stderr
+        error: action.payload.stderr,
       }
 
-    case 'CODE_CHANGED':
+    case "CODE_CHANGED":
       return {
         ...state,
-        codeChangedSinceCompilation: true
+        codeChangedSinceCompilation: true,
       }
 
     default:

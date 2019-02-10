@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-import './App.css'
+import "./App.css"
 
-import SidebarContainer from './SidebarContainer'
-import EditorContainer from './EditorContainer'
+import SidebarContainer from "./SidebarContainer"
+import EditorContainer from "./EditorContainer"
 
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = {
-      code: localStorage.getItem('code') || require('../project.c')
+      code: localStorage.getItem("code") || require("../project.c"),
     }
   }
 
-  updateCode (code) {
-    localStorage.setItem('code', code)
+  updateCode(code) {
+    localStorage.setItem("code", code)
     this.setState({ code })
   }
 
-  render () {
+  render() {
     return (
-      <div className='app'>
+      <div className="app">
         <EditorContainer />
         <SidebarContainer />
       </div>

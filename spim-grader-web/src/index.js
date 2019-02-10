@@ -1,28 +1,29 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer as HotEnabler } from 'react-hot-loader'
-import App from './components/App'
-import 'normalize.css'
+import React from "react"
+import { render } from "react-dom"
+import { AppContainer as HotEnabler } from "react-hot-loader"
+import App from "./components/App"
+import "normalize.css"
 
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux"
 
-import store from './store'
+import store from "./store"
 
-import './socket'
+import "./socket"
 
-const appRoot = document.getElementById('root')
+const appRoot = document.getElementById("root")
 
 render(
   <HotEnabler>
     <Provider store={store}>
       <App />
     </Provider>
-  </HotEnabler>
-, appRoot)
+  </HotEnabler>,
+  appRoot,
+)
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default
+  module.hot.accept("./components/App", () => {
+    const NextApp = require("./components/App").default
 
     render(
       <HotEnabler>
@@ -30,7 +31,7 @@ if (module.hot) {
           <NextApp />
         </Provider>
       </HotEnabler>,
-      appRoot
+      appRoot,
     )
   })
 }

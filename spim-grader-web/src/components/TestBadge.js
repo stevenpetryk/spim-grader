@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import cx from 'classnames'
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import cx from "classnames"
 
 class TestBadge extends Component {
-  render () {
+  render() {
     const { loading, error, results } = this.props
 
-    return (
-      <div className={cx('badge', { loading, error: error || (results && results.fail) })} />
-    )
+    return <div className={cx("badge", { loading, error: error || (results && results.fail) })} />
   }
 }
 
-export default connect((state) => state.test)(TestBadge)
+export default connect(state => state.test)(TestBadge)

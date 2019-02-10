@@ -1,25 +1,25 @@
-process.stdin.setEncoding('utf8')
+process.stdin.setEncoding("utf8")
 
-const compile = require('./compile')
-const test = require('./test')
-const run = require('./run')
+const compile = require("./compile")
+const test = require("./test")
+const run = require("./run")
 
 const command = process.argv[2]
 
 switch (command) {
-  case 'compile':
-    let program = Buffer.from(process.argv[3], 'base64').toString()
+  case "compile":
+    let program = Buffer.from(process.argv[3], "base64").toString()
 
     compile(program).catch(({ stderr }) => writeFailure(stderr))
     break
-  case 'test':
+  case "test":
     test()
-      .then((output) => writeSuccess(output))
+      .then(output => writeSuccess(output))
       .catch(({ error }) => {
         writeFailure(error)
       })
     break
-  case 'run':
+  case "run":
     run()
     break
   default:
@@ -27,11 +27,11 @@ switch (command) {
     process.exit(1)
 }
 
-function writeSuccess (output) {
+function writeSuccess(output) {
   process.stdout.write(output)
 }
 
-function writeFailure (error) {
+function writeFailure(error) {
   process.stderr.write(error)
   process.exit(1)
 }

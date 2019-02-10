@@ -1,9 +1,9 @@
-const TAPParser = require('tap-parser')
-const { Readable } = require('stream')
+const TAPParser = require("tap-parser")
+const { Readable } = require("stream")
 
-module.exports = function (output) {
+module.exports = function(output) {
   return new Promise((resolve, reject) => {
-    const parser = new TAPParser({ passes: true }, (result) => {
+    const parser = new TAPParser({ passes: true }, result => {
       resolve(result)
     })
 

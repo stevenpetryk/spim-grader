@@ -1,5 +1,5 @@
-import { default as localStore } from 'store'
-import pick from 'lodash/pick'
+import { default as localStore } from "store"
+import pick from "lodash/pick"
 
 export default (...keys) => {
   return store => next => action => {
@@ -8,7 +8,7 @@ export default (...keys) => {
     const nextState = store.getState()
 
     if (prevState !== nextState) {
-      localStore.set('state', pick(nextState, keys))
+      localStore.set("state", pick(nextState, keys))
     }
 
     return result

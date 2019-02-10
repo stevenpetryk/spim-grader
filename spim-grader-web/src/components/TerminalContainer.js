@@ -1,16 +1,16 @@
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 
-import RunTerminal from './RunTerminal'
+import RunTerminal from "./RunTerminal"
 
-function mapStateToProps () {
+function mapStateToProps() {
   return {}
 }
 
-function mapDispatchToProps (dispatch, ownProps) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    sendStdin (line) {
+    sendStdin(line) {
       // dispatch({ type: 'STDIN', socket: true, payload: { line } })
-    }
+    },
   }
 }
 

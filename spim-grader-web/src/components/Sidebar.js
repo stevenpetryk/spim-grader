@@ -1,23 +1,28 @@
-import React, { Component } from 'react'
-import cx from 'classnames'
+import React, { Component } from "react"
+import cx from "classnames"
 
-import './Sidebar.css'
-import './Tabs.css'
+import "./Sidebar.css"
+import "./Tabs.css"
 
-import ConnectionContainer from './ConnectionContainer'
-import CompileContainer from './CompileContainer'
+import ConnectionContainer from "./ConnectionContainer"
+import CompileContainer from "./CompileContainer"
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 
-import TerminalContainer from './TerminalContainer'
+import TerminalContainer from "./TerminalContainer"
 
-import TestBadge from './TestBadge'
-import TestContainer from './TestContainer'
+import TestBadge from "./TestBadge"
+import TestContainer from "./TestContainer"
 
 export default class Sidebar extends Component {
-  render () {
+  render() {
     return (
-      <div className={cx('sidebar', { compiled: this.props.compiled, connected: this.props.connected })}>
+      <div
+        className={cx("sidebar", {
+          compiled: this.props.compiled,
+          connected: this.props.connected,
+        })}
+      >
         <ConnectionContainer />
 
         <CompileContainer />
@@ -30,7 +35,7 @@ export default class Sidebar extends Component {
             </Tab>
           </TabList>
 
-          <div className='react-tab-panels'>
+          <div className="react-tab-panels">
             <TabPanel>
               <TerminalContainer />
             </TabPanel>

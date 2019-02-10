@@ -1,18 +1,21 @@
-import { connect } from 'react-redux'
-import Compile from './Compile'
+import { connect } from "react-redux"
+import Compile from "./Compile"
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.compile
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    compile () {
+    compile() {
       dispatch((dispatch, getState) =>
-        dispatch({ type: 'COMPILE', socket: true, payload: { program: getState().code } })
+        dispatch({ type: "COMPILE", socket: true, payload: { program: getState().code } }),
       )
-    }
+    },
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Compile)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Compile)

@@ -1,21 +1,18 @@
-import React from 'react'
+import React from "react"
 
-import CodeMirror from 'react-codemirror'
-import '../../node_modules/codemirror/lib/codemirror.css'
-import 'codemirror/mode/clike/clike'
+import CodeMirror from "react-codemirror"
+import "../../node_modules/codemirror/lib/codemirror.css"
+import "codemirror/mode/clike/clike"
 
-export default ({
-  code,
-  codeChanged
-}) => (
-  <div className='editor'>
+export default ({ code, codeChanged }) => (
+  <div className="editor">
     <CodeMirror
       value={code}
       onChange={codeChanged}
       options={{
-        mode: 'text/x-csrc',
+        mode: "text/x-csrc",
         lineNumbers: true,
-        tabSize: 4
+        tabSize: 4,
       }}
     />
   </div>
